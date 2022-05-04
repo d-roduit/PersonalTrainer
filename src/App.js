@@ -1,13 +1,11 @@
+import DrawerApp from './components/DrawerApp'
+
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          HEHE HELLOW
-        </p>
-      </header>
-    </div>
-  );
+    return (
+        <div className="App">
+            <DrawerApp />
+        </div>
+    );
 }
 
 export default App;
