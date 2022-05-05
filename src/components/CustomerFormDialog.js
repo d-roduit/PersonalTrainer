@@ -13,7 +13,25 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
         onCloseCallback();
     };
 
+    const validateFields = () => {
+        if ((typeof customer.firstname === "undefined" || customer.firstname.trim() === "")
+            || (typeof customer.lastname === "undefined" || customer.lastname.trim() === "")
+            || (typeof customer.email === "undefined" || customer.email.trim() === "")
+            || (typeof customer.phone === "undefined" || customer.phone.trim() === "")
+            || (typeof customer.streetaddress === "undefined" || customer.streetaddress.trim() === "")
+            || (typeof customer.postcode === "undefined" || customer.postcode.trim() === "")
+            || (typeof customer.city === "undefined" || customer.city.trim() === "")
+        ) {
+            return false;
+        }
+        return true;
+    }
+
     const handleSave = () => {
+        if (!validateFields()) {
+            return;
+        }
+
         onSaveCallback(customer);
         onCloseCallback();
     };
@@ -40,9 +58,9 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="Firstname"
                         fullWidth
                         variant="standard"
+                        required
                     />
                     <TextField
-                        autoFocus
                         margin="dense"
                         name="lastname"
                         value={customer.lastname}
@@ -50,9 +68,9 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="Lastname"
                         fullWidth
                         variant="standard"
+                        required
                     />
                     <TextField
-                        autoFocus
                         margin="dense"
                         name="email"
                         value={customer.email}
@@ -60,9 +78,9 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="Email"
                         fullWidth
                         variant="standard"
+                        required
                     />
                     <TextField
-                        autoFocus
                         margin="dense"
                         name="phone"
                         value={customer.phone}
@@ -70,9 +88,9 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="Phone"
                         fullWidth
                         variant="standard"
+                        required
                     />
                     <TextField
-                        autoFocus
                         margin="dense"
                         name="streetaddress"
                         value={customer.streetaddress}
@@ -80,9 +98,9 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="Streetaddress"
                         fullWidth
                         variant="standard"
+                        required
                     />
                     <TextField
-                        autoFocus
                         margin="dense"
                         name="postcode"
                         value={customer.postcode}
@@ -90,9 +108,9 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="Postcode"
                         fullWidth
                         variant="standard"
+                        required
                     />
                     <TextField
-                        autoFocus
                         margin="dense"
                         name="city"
                         value={customer.city}
@@ -100,6 +118,7 @@ function CustomerFormDialog({ title, open, data, onSaveCallback, onCloseCallback
                         label="City"
                         fullWidth
                         variant="standard"
+                        required
                     />
                 </DialogContent>
                 <DialogActions>

@@ -32,7 +32,6 @@ function CustomersPage() {
         onSaveCallback: null,
         onCloseCallback: null,
     });
-
     const [customers, setCustomers] = useState([]);
     const [snackbarState, setSnackbarState] = useState({
         open: false,
@@ -85,6 +84,16 @@ function CustomersPage() {
     const deleteCustomer = customerData => {
         if (window.confirm(`Are you sure to delete ${customerData.firstname || ""} ${customerData.lastname || ""} ?`)) {
             const deleteCustomerAPIEndpoint = customerData?.links?.[0]?.href;
+
+            if (typeof deleteCustomerAPIEndpoint === "undefined") {
+                setSnackbarState({
+                    open: true,
+                    message: customerActionsMessages.deletion.failed,
+                    severity: "error",
+                })
+                return;
+            }
+
             fetch(deleteCustomerAPIEndpoint, { method: "DELETE" })
             .then(response => {
                 if (!response.ok) {
@@ -108,6 +117,16 @@ function CustomersPage() {
 
     const updateCustomer = (customerData) => {
         const updateCustomerAPIEndpoint = customerData?.links?.[0]?.href;
+
+        if (typeof updateCustomerAPIEndpoint === "undefined") {
+            setSnackbarState({
+                open: true,
+                message: customerActionsMessages.edition.failed,
+                severity: "error",
+            })
+            return;
+        }
+
         fetch(updateCustomerAPIEndpoint, {
             method: "PUT",
             headers: { "Content-Type": "application/json"},
@@ -205,6 +224,7 @@ function CustomersPage() {
                 columns={columns}
                 pagination
                 pageSize={10}
+                rowsPerPageOptions={[10]}
                 disableSelectionOnClick
                 components={{
                     Toolbar: () => (
