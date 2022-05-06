@@ -22,7 +22,7 @@ import StatsPage from './StatsPage';
 
 const darkTheme = createTheme({
     palette: {
-        mode: 'dark',
+        mode: 'light',
     },
 });
 
@@ -59,7 +59,7 @@ function DrawerApp() {
                     position="fixed"
                     sx={{
                         zIndex: theme => theme.zIndex.drawer + 1,
-                        backgroundColor: theme => `info.${theme.palette.mode}`
+                        //backgroundColor: theme => `info.${theme.palette.mode}`
                     }}
                 >
                     <Toolbar>

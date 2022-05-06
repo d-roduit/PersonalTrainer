@@ -204,7 +204,10 @@ function TrainingsPage() {
                 autoHideDuration={3000}
                 onClose={() => setSnackbarState({open: false})}
             >
-                <MuiAlert severity={snackbarState.severity} sx={{ color: "white", backgroundColor: theme => `${snackbarState.severity}.${theme.palette.mode}` }}>
+                <MuiAlert
+                    severity={snackbarState.severity}
+                    //sx={{ color: "white", backgroundColor: theme => `${snackbarState.severity}.${theme.palette.mode}` }}
+                >
                     {snackbarState.message}
                 </MuiAlert>
             </Snackbar>
