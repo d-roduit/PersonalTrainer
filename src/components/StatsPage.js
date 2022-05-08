@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import Lodash from 'lodash';
+import { useTheme } from '@mui/material/styles';
 
 function StatsPage() {
 
@@ -30,13 +31,15 @@ function StatsPage() {
 
     useEffect(() => fetchTrainings(), []);
 
+    const theme = useTheme();
+
     return (
         <BarChart width={800} height={500} data={chartData}>
-            <CartesianGrid strokeDasharray="3 3" />
+            <CartesianGrid strokeDasharray="3 3"/>
             <XAxis dataKey="activity" />
-            <YAxis label={{ value: "Duration (min)", angle: -90, position: 'insideLeft' }}/>
+            <YAxis label={{ value: "Duration (min)", angle: -90, position: 'insideLeft', fill: theme.palette.text.primary }}/>
             <Tooltip />
-            <Bar dataKey="duration" fill="#8884d8" />
+            <Bar dataKey="duration" fill="#0288d1" />
         </BarChart>
     );
 }

@@ -206,7 +206,7 @@ function TrainingsPage() {
             >
                 <MuiAlert
                     severity={snackbarState.severity}
-                    //sx={{ color: "white", backgroundColor: theme => `${snackbarState.severity}.${theme.palette.mode}` }}
+                    sx={{ color: "white", backgroundColor: theme => `${snackbarState.severity}.${theme.palette.mode}` }}
                 >
                     {snackbarState.message}
                 </MuiAlert>
