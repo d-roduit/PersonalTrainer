@@ -40,7 +40,8 @@ You will need to follow the steps below in order to run the web application :
 1. Install the Node.js runtime on your computer. You can find the link to download it under the [Guides and resources](#guides-and-resources) section.
 2. Download this repository and unzip it.
 3. With a shell (CMD, PowerShell, Bash, etc), navigate to the unzipped folder and execute the `npm install` command.
-4. Run the project by executing `npm start`.
+4. [Optional] Rename the `.env.example` file to `.env` and set correct values. Without correct URLs for the API, PersonalTrainer will work but display no data.
+5. Run the project by executing `npm start`.
 
 Once these four steps have been executed, you will be able to open the URL `http://localhost:3000` in your browser and use **PersonalTrainer** !
 
